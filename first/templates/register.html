@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>Register page</h1>
+{% endblock %}
+
+{% block content %}
+<hr>
+{% for cat, message in get_flashed_messages(True) %}
+<p class="{{cat}}">{{ message }}</p>
+{% endfor %}
+
+<form action="{{ url_for('register')}}" method="post">
+    <p><label>Имя:</label> <input type="text" name="name">
+    <p><label>Email:</label> <input type="text" name="email">
+    <p><label>Пароль:</label> <input type="password" name="password">
+    <p><label>Повторите пароль:</label> <input type="password" name="repeat">
+    <p><input type="submit" value="Зарегестрироваться"></p>
+</form>
+
+{% endblock %}
