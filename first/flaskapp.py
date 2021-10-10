@@ -68,6 +68,7 @@ def index():
 
 
 @app.route('/page2')
+@login_required
 def second():
     fdb = FlaskDataBase(get_db())
 
@@ -85,12 +86,18 @@ def second():
 
 # int, float, path
 @app.route('/profile')
+@login_required
 def profile():
-    return f"""<p><h1>Hello {current_user.get_id()}!</h1>
+    fdb = FlaskDataBase(get_db())
+    return render_template(
+        'profile.html',
+        menu_url=fdb.get_menu()
+    ) + f"""<p>Приветствую, номер {current_user.get_id()}!
                <p><a href="{url_for('logout')}"> Выход </a>"""
 
 
 @app.route('/add_post', methods=["GET", "POST"])
+@login_required
 def add_post():
     fdb = FlaskDataBase(get_db())
 

@@ -17,16 +17,16 @@ def password_check(password):
     length_error = len(password) < 8
 
     # searching for digits
-    digit_error = re.search(r"\d", password) is none
+    digit_error = re.search(r"\d", password) is None
 
     # searching for uppercase
-    uppercase_error = re.search(r"[a-z]", password) is none
+    uppercase_error = re.search(r"[a-z]", password) is None
 
     # searching for lowercase
-    lowercase_error = re.search(r"[a-z]", password) is none
+    lowercase_error = re.search(r"[a-z]", password) is None
 
     # searching for symbols
-    symbol_error = re.search(r"[ !#$%&'()*+,-./[\\\]^_`{|}~"+r'"]', password) is none
+    symbol_error = re.search(r"[ !#$%&'()*+,-./[\\\]^_`{|}~"+r'"]', password) is None
 
     # overall result
     password_ok = not ( length_error or digit_error or uppercase_error or lowercase_error or symbol_error )
